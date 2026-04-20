@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Senior Advantage — Key Insights Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f0e8;
+    --gold: #c9993a;
+    --rust: #b04a2f;
+    --slate: #3d4a5c;
+    --light-slate: #8a9ab0;
+    --cream: #fdf8ef;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 48px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,153,58,0.25);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,153,58,0.15);
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 62px);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: 680px;
+  }
+  h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .header-sub {
+    margin-top: 20px;
+    font-size: 15px;
+    color: rgba(245,240,232,0.6);
+    max-width: 500px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+  }
+
+  /* ── STAT GRID ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2px;
+    margin-bottom: 60px;
+  }
+  .stat-card {
+    background: var(--cream);
+    padding: 28px 24px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .stat-card:nth-child(1) { border-top-color: var(--gold); }
+  .stat-card:nth-child(2) { border-top-color: var(--slate); }
+  .stat-card:nth-child(3) { border-top-color: var(--rust); }
+  .stat-card:nth-child(4) { border-top-color: var(--gold); }
+  .stat-card:nth-child(5) { border-top-color: var(--slate); }
+  .stat-card:nth-child(6) { border-top-color: var(--rust); }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .stat-number span {
+    font-size: 22px;
+    color: var(--gold);
+  }
+  .stat-desc {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  /* ── TWO-COL INSIGHTS ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 640px) { .insights-grid { grid-template-columns: 1fr; } }
+
+  .insight-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .insight-block p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.75;
+  }
+  .insight-block .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+  .tag-eu { color: var(--slate); }
+  .tag-ai { color: var(--rust); }
+  .tag-gap { color: var(--gold); }
+
+  /* ── AI SKILLS BAR ── */
+  .skills-section { margin-bottom: 60px; }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .skill-name {
+    font-size: 13px;
+    width: 210px;
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+  .skill-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: #e0d9cc;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .skill-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gold);
+    transform-origin: left;
+    animation: growBar 1.2s ease forwards;
+    transform: scaleX(0);
+  }
+  @keyframes growBar { to { transform: scaleX(1); } }
+  .skill-bar.technical { background: var(--slate); }
+  .skill-pct {
+    font-size: 12px;
+    color: var(--light-slate);
+    width: 36px;
+    text-align: right;
+  }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 56px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before {
+    content: '"';
+    position: absolute;
+    top: -30px; left: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 260px;
+    color: rgba(201,153,58,0.07);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .manifesto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 28px;
+    line-height: 1.2;
+    max-width: 640px;
+    position: relative;
+  }
+  .manifesto-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.82);
+    max-width: 700px;
+    position: relative;
+  }
+  .manifesto-body p { margin-bottom: 18px; }
+  .manifesto-body p:last-child { margin-bottom: 0; }
+  .manifesto-body strong {
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER PILL ── */
+  .footer-note {
+    text-align: center;
+    padding: 32px 20px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-slate);
+  }
+  .footer-note strong {
+    color: var(--gold);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0.3;
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Intelligence Brief · 2025–2026</div>
+  <h1>The Senior<br>Workforce &amp;<br><em>The AI Divide</em></h1>
+  <p class="header-sub">Key insights on employment, AI adoption, and the strategic value of experienced talent in Europe and beyond.</p>
+</header>
+
+<main>
+
+  <!-- KEY STATS -->
+  <div class="section-label">Key Statistics</div>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">64.6<span>%</span></div>
+      <div class="stat-desc">OECD employment rate for workers aged 55–64 — 15 pp below prime-age workers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">66<span>%</span></div>
+      <div class="stat-desc">EU employment rate for ages 55–64 — EU average in 2024, rising steadily since 2009</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">50<span>%</span></div>
+      <div class="stat-desc">Drop-off at age 60–64 in the EU — from 76% employed at 55–59 to just 50.9%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">18<span>%</span></div>
+      <div class="stat-desc">Workers over 50 who use AI at work — vs. 38% of workers aged 18–29</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">60<span>%</span></div>
+      <div class="stat-desc">Mid-career &amp; older workers who express strong interest in learning AI</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">44<span>%</span></div>
+      <div class="stat-desc">European workers who believe their employer will NOT provide AI training</div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="section-label">Key Insights</div>
+  <div class="insights-grid">
+
+    <div class="insight-block">
+      <span class="tag tag-eu">Europe</span>
+      <h3>A Tale of Two Europes</h3>
+      <p>Northern Europe (Sweden, Germany, Netherlands, Denmark) employs 73–77% of workers aged 55–64. Southern Europe (Italy, Greece, Romania) struggles to exceed 55–60%. Germany leads the DACH region with 35 of 38 regions already meeting the EU's 2030 employment target.</p>
+    </div>
+
+    <div class="insight-block">
+      <span class="tag tag-ai">AI Adoption</span>
+      <h3>The Generational AI Gap</h3>
+      <p>50% of Gen Z and Millennials have used generative AI, versus only 22% of Baby Boomers. In the EU, older workers and women are specifically identified as the least likely to deploy AI at work — a gap Cedefop and the EU Commission have formally committed to closing.</p>
+    </div>
+
+    <div class="insight-block">
+      <span class="tag tag-gap">Skills Gap</span>
+      <h3>Willing but Undertrained</h3>
+      <p>70% of workers over 45 expect AI to transform their roles within three years, yet nearly half have received no employer-sponsored training. Companies' AI training budgets skew dramatically toward employees under 40 — leaving experienced talent exposed.</p>
+    </div>
+
+    <div class="insight-block">
+      <span class="tag tag-eu">Workforce Risk</span>
+      <h3>120 Million at Risk</h3>
+      <p>The WEF projects that 59 in every 100 global workers will need reskilling by 2030 — 11 of whom are unlikely to receive it, translating to over 120 million workers at medium-term redundancy risk. Experienced workers without AI literacy are disproportionately vulnerable.</p>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- AI SKILLS -->
+  <div class="section-label">Most Valuable AI Skills in Europe — 2026</div>
+  <div class="skills-section">
+
+    <div class="skill-row">
+      <div class="skill-name">AI Literacy &amp; Prompting</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%; animation-delay:0.1s"></div></div>
+      <div class="skill-pct">Essential</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Machine Learning</div>
+      <div class="skill-bar-wrap"><div class="skill-bar technical" style="width:88%; animation-delay:0.2s"></div></div>
+      <div class="skill-pct">High</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Data Analytics &amp; BI</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:82%; animation-delay:0.3s"></div></div>
+      <div class="skill-pct">High</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Generative AI Tools</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:78%; animation-delay:0.4s"></div></div>
+      <div class="skill-pct">High</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">NLP / Large Language Models</div>
+      <div class="skill-bar-wrap"><div class="skill-bar technical" style="width:74%; animation-delay:0.5s"></div></div>
+      <div class="skill-pct">Growing</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Process Automation (AI)</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%; animation-delay:0.6s"></div></div>
+      <div class="skill-pct">Growing</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Computer Vision</div>
+      <div class="skill-bar-wrap"><div class="skill-bar technical" style="width:65%; animation-delay:0.7s"></div></div>
+      <div class="skill-pct">Specialist</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">AI Ethics &amp; Governance</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%; animation-delay:0.8s"></div></div>
+      <div class="skill-pct">Rising</div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MANIFESTO -->
+  <div class="section-label">Why Hire Senior Talent</div>
+</main>
+
+<div class="manifesto">
+  <h2>Experience doesn't expire.<br>It compounds.</h2>
+  <div class="manifesto-body">
+    <p>In a labour market increasingly disrupted by AI, there is a reflexive temptation to equate youth with adaptability and experience with obsolescence. The data tells a different story — and so does business reality.</p>
+
+    <p><strong>Senior professionals bring what no algorithm can generate: contextual judgement.</strong> Decades of navigating organisational complexity, managing crises, leading teams through change, and delivering results across economic cycles produce a form of intelligence that is irreplaceable. They have seen trends before they were called trends.</p>
+
+    <p><strong>Their institutional knowledge is a strategic asset.</strong> Research consistently shows that experienced workers improve team decision-making quality, reduce costly errors, and accelerate the development of junior colleagues. A 2024 Brookings study found that workers who combined AI upskilling with existing experience showed 27% higher job retention rates — precisely because experience amplifies the value of new tools, rather than competing with them.</p>
+
+    <p><strong>The AI moment makes this more urgent, not less.</strong> Deploying AI effectively in real business environments — healthcare, manufacturing, public administration, education — requires deep domain knowledge. You cannot prompt your way to competence without understanding the domain. Senior professionals who acquire AI literacy become exponentially more powerful, not redundant.</p>
+
+    <p><strong>There is also a human-centred argument.</strong> As AI handles increasing volumes of data processing and routine analysis, human skills — empathy, ethical reasoning, stakeholder communication, cross-cultural leadership — rise in relative value. These are precisely the capabilities refined over long careers.</p>
+
+    <p>Hiring senior professionals with AI skills is not a social gesture. <strong>It is a competitive advantage.</strong> The organisations that understand this first will benefit most.</p>
+  </div>
+</div>
+
+<div class="footer-note">
+  Sources: Eurostat · OECD Employment Outlook 2025 · WEF Future of Jobs 2025 · Cedefop AI Skills Survey · LinkedIn Jobs on the Rise 2026 · Pew Research · Brookings Institution<br><br>
+  <strong>Experience finds its stage.</strong>
+</div>
+
+</body>
+</html>
